@@ -1,3 +1,4 @@
+
 # Event Registration Form
 
 A responsive Event Registration web application featuring modern Sign Up and Sign In pages.
@@ -37,3 +38,4 @@ Event-Registration-Form/
 ## Author
 
 Srikarani Gurram
+
