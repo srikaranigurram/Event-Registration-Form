@@ -80,7 +80,11 @@ const user=JSON.parse(localStorage.getItem(email));
 
 if(user && user.password===password){
 
-alert("Login Successful!\nWelcome "+user.name);
+    localStorage.setItem("loggedInUser", email);
+
+    alert("Login Successful!\nWelcome " + user.name);
+
+    window.location.href = "dashboard.html";
 
 }
 
@@ -91,5 +95,49 @@ alert("Invalid Email or Password");
 }
 
 });
+
+}
+/* ============================= */
+/* DASHBOARD */
+/* ============================= */
+
+const userEmail = localStorage.getItem("loggedInUser");
+
+if (document.getElementById("userName")) {
+
+    if (!userEmail) {
+
+        window.location.href = "index.html";
+
+    } else {
+
+        const userData =
+            JSON.parse(localStorage.getItem(userEmail));
+
+        if (userData) {
+
+            document.getElementById("userName").textContent =
+                userData.name;
+
+            document.getElementById("dashboardName").textContent =
+                userData.name;
+
+            document.getElementById("dashboardEmail").textContent =
+                userData.email;
+
+        }
+
+    }
+
+}
+
+
+/* Logout */
+
+function logout() {
+
+    localStorage.removeItem("loggedInUser");
+
+    window.location.href = "index.html";
 
 }
